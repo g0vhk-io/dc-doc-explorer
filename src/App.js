@@ -4,6 +4,9 @@ import './App.css';
 import ssp from './data/ssp.json';
 import north from './data/north.json';
 import central from './data/central.json';
+import south from './data/south.json';
+import east from './data/east.json';
+import wc from './data/wc.json';
 import tw from './data/tw.json';
 import ReactTable from "react-table";
 import { FaHome, FaFacebook, FaTwitter, FaGithub } from 'react-icons/fa';
@@ -49,6 +52,18 @@ class App extends Component {
     if (district === 'tw') {
       data = tw;
     }
+    if (district === 'east') {
+      data = east;
+    }
+
+    if (district === 'south') {
+      data = south;
+    }
+
+    if (district === 'wc') {
+      data = wc;
+    }
+
 
     const category = data.tree['children'][index]['name'];
 
@@ -97,6 +112,9 @@ class App extends Component {
                   <option value="north">北區</option>
                   <option value="central">中西區</option>
                   <option value="tw">荃灣</option>
+                  <option value="east">東區</option>
+                  <option value="south">南區</option>
+                  <option value="wc">灣仔</option>
                 </select>
               </h2>
               <table>
