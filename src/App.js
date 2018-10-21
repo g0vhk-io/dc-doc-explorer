@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import 'react-table/react-table.css';
 import './App.css';
 import ssp from './data/ssp.json';
@@ -31,13 +30,13 @@ class App extends Component {
     let data = ssp;
     const { district, index, districtLabel } = this.state;
     console.log(this.state);
-    if (district == 'north') {
+    if (district === 'north') {
       data = north;
     }
-    if (district == 'central') {
+    if (district === 'central') {
       data = central;
     }
-    if (district == 'tw') {
+    if (district === 'tw') {
       data = tw;
     }
 
@@ -48,7 +47,7 @@ class App extends Component {
     }, {
       Header: '文件',
       id: 'title',
-      Cell: (d => { d = d.original; return (<a target='_blank' href={d.link}>{d.no} - {d.name}</a>);}),
+      Cell: (d => { d = d.original; return (<a target='_blank' rel='noopener noreferrer' href={d.link}>{d.no} - {d.name}</a>);}),
     }];
     const category = data.tree['children'][index]['name'];
     return (
@@ -84,7 +83,7 @@ class App extends Component {
                 </select>
               </h2>
               <table>
-                {data.tree['children'].map((d, i) => (<tr><td><a href={'#'} index={i} onClick={() => this.onClick(i)}>{d['name']}(共{d['total']}個)</a></td></tr>))}
+                {data.tree['children'].map((d, i) => (<tr><td><span index={i} onClick={() => this.onClick(i)}>{d['name']}(共{d['total']}個)</span></td></tr>))}
               </table>
             </div>
           </div>
