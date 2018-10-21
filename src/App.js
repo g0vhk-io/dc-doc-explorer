@@ -7,6 +7,8 @@ import central from './data/central.json';
 import tw from './data/tw.json';
 import ReactTable from "react-table";
 import { FaHome, FaFacebook, FaTwitter, FaGithub } from 'react-icons/fa';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-82689420-4');
 
 class App extends Component {
   constructor(props){
@@ -14,6 +16,13 @@ class App extends Component {
     this.state = {district: 'ssp', index: 0, districtLabel: '深水埗'};
     this.change = this.change.bind(this);
     this.onClick = this.onClick.bind(this);
+  }
+
+  componentDidMount() {
+    ReactGA.event({
+      category: 'home',
+      action: 'home'
+    }); 
   }
 
   onClick(index) {
@@ -29,6 +38,7 @@ class App extends Component {
   render() {
     let data = ssp;
     const { district, index, districtLabel } = this.state;
+    
     console.log(this.state);
     if (district === 'north') {
       data = north;
@@ -40,6 +50,14 @@ class App extends Component {
       data = tw;
     }
 
+    const category = data.tree['children'][index]['name'];
+
+    ReactGA.event({
+      category: 'home',
+      action: 'view',
+      label: districtLabel + '-' + category
+    }); 
+
     const columns = [{
       Header: '委員會',
       accessor: 'committee',
@@ -49,7 +67,6 @@ class App extends Component {
       id: 'title',
       Cell: (d => { d = d.original; return (<a target='_blank' rel='noopener noreferrer' href={d.link}>{d.no} - {d.name}</a>);}),
     }];
-    const category = data.tree['children'][index]['name'];
     return (
       <div>
         <div className="header">
