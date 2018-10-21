@@ -1,5 +1,60 @@
-.App {
-  text-align: center;
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+* {
+  font-family: 'Noto Sans TC', MHeiHK, '微軟正黑體' !important;
+}
+
+.header {
+  background-color:#3f51b5;
+  padding: 0.5em;
+  color: #fff;
+}
+
+.header a {
+  color: #fff;
+}
+
+.header h1 {
+  margin-left: 2em;
+}
+
+.app:after {
+  content: "";
+  clear: both;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+
+.menu {
+  padding: 1em;
+  float:left;
+  height:100%;
+  width: 20%;
+  min-width:10em;
+  background-color:#21252B;
+}
+
+.menu a{
+  color: #fff;
+}
+
+.menu .select_container {
+  color: #fff;
+}
+
+.menu .select_container select{
+  font-size: 0.75em;
+  padding: 0.25em;
+}
+
+
+
+.list {
+  height: 100%;
 }
 
 .App-logo {
