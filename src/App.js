@@ -8,6 +8,13 @@ import south from './data/south.json';
 import east from './data/east.json';
 import wc from './data/wc.json';
 import tw from './data/tw.json';
+
+// Kowloon
+import kc from './data/kc.json';
+import kt from './data/kt.json';
+import wts from './data/wts.json';
+import ytm from './data/ytm.json';
+
 import ReactTable from "react-table";
 import { FaHome, FaFacebook, FaTwitter, FaGithub } from 'react-icons/fa';
 import ReactGA from 'react-ga';
@@ -64,6 +71,23 @@ class App extends Component {
       data = wc;
     }
 
+    if (district === 'kt') {
+      data = kt;
+    }
+
+    if (district === 'kc') {
+      data = kc;
+    }
+
+    if (district === 'ytm') {
+      data = ytm;
+    }
+
+    if (district === 'wts') {
+      data = wts;
+    }
+
+
 
     const category = data.tree['children'][index]['name'];
 
@@ -115,6 +139,10 @@ class App extends Component {
                   <option value="east">東區</option>
                   <option value="south">南區</option>
                   <option value="wc">灣仔</option>
+                  <option value="kt">觀塘區</option>
+                  <option value="kc">九龍城區</option>
+                  <option value="ytm">油尖旺區</option>
+                  <option value="wts">黃大仙區</option>
                 </select>
               </h2>
               <table>
