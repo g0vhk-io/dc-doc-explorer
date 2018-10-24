@@ -1,20 +1,6 @@
 import React, { Component } from 'react';
 import 'react-table/react-table.css';
 import './App.css';
-import ssp from './data/ssp.json';
-import north from './data/north.json';
-import central from './data/central.json';
-import south from './data/south.json';
-import east from './data/east.json';
-import wc from './data/wc.json';
-import tw from './data/tw.json';
-
-// Kowloon
-import kc from './data/kc.json';
-import kt from './data/kt.json';
-import wts from './data/wts.json';
-import ytm from './data/ytm.json';
-
 /* eslint-disable import/first */
 
 const dataMap = {
@@ -92,13 +78,8 @@ class App extends Component {
   }
 
   render() {
-    let data = ssp;
     const { district, index, districtLabel } = this.state;
-    
-    console.log(this.state);
-
-    data = dataMap[district]
-
+    const data = dataMap[district]
     const category = data.tree['children'][index]['name'];
 
     ReactGA.event({
