@@ -15,6 +15,52 @@ import kt from './data/kt.json';
 import wts from './data/wts.json';
 import ytm from './data/ytm.json';
 
+/* eslint-disable import/first */
+
+const dataMap = {
+    'north': require('./data/north.json'),
+    'ssp': require('./data/ssp.json'),
+    'central': require('./data/central.json'),
+    'tw': require('./data/tw.json'),
+    'east': require('./data/east.json'),
+    'south': require('./data/south.json'),
+    'wc': require('./data/wc.json'),
+    'kc': require('./data/kc.json'),
+    'ytm': require('./data/ytm.json'),
+    'wts': require('./data/wts.json'),
+    'kt': require('./data/kt.json'),
+    'island': require('./data/island.json'),
+    'yl': require('./data/yl.json'),
+    'st': require('./data/st.json'),
+    'sk': require('./data/sk.json'),
+    'kwt': require('./data/kwt.json'),
+    'tp': require('./data/tp.json'),
+    'tm': require('./data/tm.json')
+};
+
+const districts = {
+    'north': '北區',
+    'ssp': '深水埗區',
+    'central': '中西區',
+    'tw': '荃灣區',
+    'east': '東區',
+    'south': '南區',
+    'wc': '灣仔區',
+    'kc': '九龍城區',
+    'ytm': '油尖旺區',
+    'wts': '黃大仙區',
+    'kt': '觀塘區',
+    'island': '離島區',
+    'yl': '元朗區',
+    'st': '沙田區',
+    'sk': '西貢區',
+    'kwt': '葵青區',
+    'tp': '大埔區',
+    'tm': '屯門區'
+};
+
+
+
 import ReactTable from "react-table";
 import { FaHome, FaFacebook, FaTwitter, FaGithub } from 'react-icons/fa';
 import ReactGA from 'react-ga';
@@ -50,44 +96,8 @@ class App extends Component {
     const { district, index, districtLabel } = this.state;
     
     console.log(this.state);
-    if (district === 'north') {
-      data = north;
-    }
-    if (district === 'central') {
-      data = central;
-    }
-    if (district === 'tw') {
-      data = tw;
-    }
-    if (district === 'east') {
-      data = east;
-    }
 
-    if (district === 'south') {
-      data = south;
-    }
-
-    if (district === 'wc') {
-      data = wc;
-    }
-
-    if (district === 'kt') {
-      data = kt;
-    }
-
-    if (district === 'kc') {
-      data = kc;
-    }
-
-    if (district === 'ytm') {
-      data = ytm;
-    }
-
-    if (district === 'wts') {
-      data = wts;
-    }
-
-
+    data = dataMap[district]
 
     const category = data.tree['children'][index]['name'];
 
@@ -132,17 +142,11 @@ class App extends Component {
             <div className="select_container">
               <h2>選擇&nbsp;
                 <select onChange={this.change}>
-                  <option value="ssp">深水埗</option>
-                  <option value="north">北區</option>
-                  <option value="central">中西區</option>
-                  <option value="tw">荃灣</option>
-                  <option value="east">東區</option>
-                  <option value="south">南區</option>
-                  <option value="wc">灣仔</option>
-                  <option value="kt">觀塘區</option>
-                  <option value="kc">九龍城區</option>
-                  <option value="ytm">油尖旺區</option>
-                  <option value="wts">黃大仙區</option>
+                  {
+                    Object.keys(districts).map((key, index) => 
+                      <option value={key}>{districts[key]}</option>
+                    )
+                  }
                 </select>
               </h2>
               <table>
